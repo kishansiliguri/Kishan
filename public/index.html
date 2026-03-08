@@ -11,21 +11,20 @@
     <header>
         <nav class="navbar">
             <div class="container nav-container">
-                <div class="logo">FlavorDash</div>
+                <div class="logo" onclick="window.location.href='/'">FlavorDash</div>
                 
-                <!-- Flipkart-like Search -->
                 <div class="search-container">
-                    <input type="text" placeholder="Search for food, restaurants or cuisines" class="search-input">
+                    <input type="text" id="search-input" placeholder="Search for food, restaurants or cuisines" class="search-input">
                     <button class="search-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
                 </div>
 
-                <div class="nav-actions">
-                    <button class="nav-link">Login</button>
-                    <button class="nav-link cart-btn">
+                <div class="nav-actions" id="nav-actions">
+                    <button class="nav-link" id="login-btn">Login</button>
+                    <button class="nav-link cart-btn" id="cart-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                        <span>Cart</span>
+                        <span id="cart-count">0</span>
                     </button>
                 </div>
             </div>
@@ -33,76 +32,66 @@
     </header>
 
     <main>
-        <!-- Slide Banner -->
         <section class="hero">
-            <div class="slider">
-                <div class="slides">
-                    <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/food1/1600/600')">
-                        <div class="slide-content">
-                            <h1>Delicious Meals Delivered</h1>
-                            <p>Get 50% off on your first order</p>
-                            <button class="btn-primary">Order Now</button>
-                        </div>
-                    </div>
-                    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/food2/1600/600')">
-                        <div class="slide-content">
-                            <h1>Fresh Ingredients Only</h1>
-                            <p>From farm to your table in 30 minutes</p>
-                            <button class="btn-primary">Explore Menu</button>
-                        </div>
-                    </div>
-                    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/food3/1600/600')">
-                        <div class="slide-content">
-                            <h1>Taste the Difference</h1>
-                            <p>Premium selection of global cuisines</p>
-                            <button class="btn-primary">View Offers</button>
-                        </div>
-                    </div>
+            <div class="slider" id="slider-container">
+                <div class="slides" id="slides-container">
+                    <!-- Banners loaded here -->
                 </div>
                 <button class="slider-btn prev">&lt;</button>
                 <button class="slider-btn next">&gt;</button>
-                <div class="slider-dots"></div>
+                <div class="slider-dots" id="dots-container"></div>
             </div>
         </section>
 
-        <!-- Categories -->
         <section class="categories container">
-            <div class="category-list">
-                <div class="category-item">
-                    <div class="category-icon">🍕</div>
-                    <span>Pizza</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🍔</div>
-                    <span>Burgers</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🍣</div>
-                    <span>Sushi</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🍜</div>
-                    <span>Noodles</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🥗</div>
-                    <span>Salads</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🍰</div>
-                    <span>Desserts</span>
-                </div>
+            <div class="category-list" id="category-list">
+                <!-- Categories loaded here -->
             </div>
         </section>
 
-        <!-- Food Grid -->
         <section class="food-grid container">
-            <h2 class="section-title">Popular Dishes</h2>
+            <h2 class="section-title" id="grid-title">Popular Dishes</h2>
             <div class="grid" id="food-container">
-                <!-- Food items will be loaded here by script.js -->
+                <!-- Food items loaded here -->
             </div>
         </section>
     </main>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="login-form">
+                <h2>Login</h2>
+                <input type="text" id="login-username" placeholder="Username">
+                <input type="password" id="login-password" placeholder="Password">
+                <button class="btn-primary w-full" id="do-login">Login</button>
+                <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+            </div>
+            <div id="register-form" style="display:none;">
+                <h2>Register</h2>
+                <input type="text" id="reg-username" placeholder="Username">
+                <input type="password" id="reg-password" placeholder="Password">
+                <button class="btn-primary w-full" id="do-register">Register</button>
+                <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items here -->
+            </div>
+            <div class="cart-total">
+                Total: ₹<span id="cart-total-amount">0</span>
+            </div>
+            <button class="btn-primary w-full" id="place-order">Place Order via WhatsApp</button>
+        </div>
+    </div>
 
     <footer>
         <div class="container footer-content">

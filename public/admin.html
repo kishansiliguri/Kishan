@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorDash - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="logo" onclick="window.location.href='/'">FlavorDash Admin</div>
+                <div class="nav-actions">
+                    <button class="nav-link" onclick="window.location.href='/'">Back to Site</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container admin-container">
+        <h1 class="section-title">Admin Dashboard</h1>
+
+        <!-- Add Category -->
+        <section class="admin-section">
+            <h2>Add Category</h2>
+            <div class="flex gap-4">
+                <input type="text" id="cat-name" placeholder="Category Name">
+                <input type="text" id="cat-icon" placeholder="Icon (Emoji)">
+                <button class="btn-primary" id="add-cat-btn">Add Category</button>
+            </div>
+        </section>
+
+        <!-- Add Item -->
+        <section class="admin-section">
+            <h2>Add Food Item</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="item-name" placeholder="Item Name">
+                <input type="text" id="item-desc" placeholder="Description">
+                <input type="number" id="item-price" placeholder="Price (₹)">
+                <select id="item-cat" class="w-full p-2 border rounded-md">
+                    <!-- Categories loaded here -->
+                </select>
+                <div>
+                    <label>Upload Image (JPEG/JPG/PNG):</label>
+                    <input type="file" id="item-image-file" accept="image/jpeg,image/jpg,image/png">
+                </div>
+                <input type="text" id="item-image-url" placeholder="OR Image URL">
+                <button class="btn-primary col-span-2" id="add-item-btn">Add Item</button>
+            </div>
+        </section>
+
+        <!-- Add Banner -->
+        <section class="admin-section">
+            <h2>Add Banner</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="banner-title" placeholder="Banner Title">
+                <input type="text" id="banner-subtitle" placeholder="Banner Subtitle">
+                <div>
+                    <label>Upload Image (JPEG/JPG/PNG):</label>
+                    <input type="file" id="banner-image-file" accept="image/jpeg,image/jpg,image/png">
+                </div>
+                <input type="text" id="banner-image-url" placeholder="OR Image URL">
+                <button class="btn-primary col-span-2" id="add-banner-btn">Add Banner</button>
+            </div>
+        </section>
+
+        <!-- Manage Items -->
+        <section class="admin-section">
+            <h2>Manage Items</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-items-list">
+                    <!-- Items loaded here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
